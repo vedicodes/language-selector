@@ -1,0 +1,10 @@
+ul.language-list {
+  padding: 0;
+  width: 18rem;
+  li {
+    list-style: none;
+    span:nth-child(2) {
+      float: right;
+    }
+  }
+}

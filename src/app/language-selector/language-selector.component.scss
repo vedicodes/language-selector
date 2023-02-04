@@ -1,0 +1,28 @@
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+  padding: 1rem;
+  min-height: 18rem;
+}
+
+ul.language-list {
+  padding: 0;
+  li {
+    list-style: none;
+  }
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.ml-auto {
+  margin-left:  auto;
+}

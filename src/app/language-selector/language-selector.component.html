@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="column">
+    <div>
+      <input type="search" id="languageSearch" [(ngModel)]="searchText" (search)="onLanguageSearch()" placeholder="Search...">
+    </div>
+    <div>
+      <ul class="language-list">
+        <li>
+          <input type="checkbox" name="selectAll" id="selectAll" (click)="onLanguageSelectAll()">
+          <label for="selectAll">Select All</label>
+        </li>
+        <li *ngFor="let language of languageOpts; let i = index;" [hidden]="language?.isHidden">
+          <input type="checkbox" name="language_{{i}}" id="language_{{i}}" [(ngModel)]="language.isChecked" (click)="onLanguageSelect(language)">
+          <label for="language_{{i}}">{{language?.label}}</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="column">
+    <div class="row justify-between">
+      <span>{{selectedLanguages.length}} selected</span>
+      <button type="button" [disabled]="selectedLanguages.length == 0" (click)="clearSelectedLanguages()">Clear All</button>
+    </div>
+    <div>
+      <ul class="language-list">
+        <li *ngFor="let language of selectedLanguages; let i = index;">
+          <span>{{language?.label}}</span>
+          <div>
+            <ng-container *ngFor="let profLevelOpt of proficiencyLevelOpt; let j = index;">
+              <input type="radio" id="proficiency_{{i}}_{{j}}" name="proficiency_{{i}}" [value]="profLevelOpt.value" [(ngModel)]="language.proficiency" />
+              <label for="proficiency_{{i}}_{{j}}">{{profLevelOpt.label}}</label>
+            </ng-container>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row justify-end">
+  <button type="button" [disabled]="selectedLanguages.length == 0" (click)="onSubmit()">Submit</button>
+  <button type="button" [disabled]="selectedLanguages.length == 0" (click)="clearAll()">Cancel</button>
+</div>

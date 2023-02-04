@@ -1,0 +1,14 @@
+<div>
+  <ng-container *ngIf="selectedLanguages?.length; else notAvail;">
+    <h4>Selected Languages</h4>
+    <ul class="language-list">
+      <li *ngFor="let language of selectedLanguages">
+        <span>{{language?.label}}</span>
+        <span>{{language?.proficiencyLabel}}</span>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #notAvail>
+    <h4>No Language Selected</h4>
+  </ng-template>
+</div>
